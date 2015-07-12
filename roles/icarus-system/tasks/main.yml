@@ -1,0 +1,18 @@
+---
+- include: rh-internal-client.yml
+- include: ../../common/tasks/gpg-system.yml
+- include: gpg-smartcard.yml
+- include: srv.yml
+- include: pkgrepos.yml
+- include: rhel-internal-yum-repos.yml
+- include: rhel-workstation-basesystem-packages.yml
+- include: ../../common/tasks/epel7.yml
+- include: rdo-kilo.yml
+- include: root-walters-homegit.yml
+- include: ../../common/tasks/secure-shell-strong.yml
+- include: libvirt.yml
+- include: networkmanager-dnsmasq.yml
+- include: devel-packages.yml
+- include: docker.yml
+- include: local-httpd-readonly.yml
+- include: local-polipo.yml

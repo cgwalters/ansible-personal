@@ -1,0 +1,19 @@
+---
+- file: path=/etc/pki/gpg-keyserver state=directory
+
+- copy: src=hkps.pool.sks-keyservers.net.pem dest=/etc/pki/gpg-keyserver/hkps.pool.sks-keyservers.net.pem
+
+- command: /bin/sh -c 'gpg --list-keys >/dev/null 2>&1'
+  args:
+    creates: /root/.gnupg
+
+- command: gpg --list-keys '1CEC7A9DF7DA85ABEF843DC0A866D7CCAE087291'
+  register: gpg_walters
+  changed_when: False
+  failed_when: False
+
+- copy: src=walters-gpg.txt dest=/root/walters-gpg.txt
+  when: gpg_walters.rc != 0
+
+- command: gpg --import /root/walters-gpg.txt
+  when: gpg_walters.rc != 0

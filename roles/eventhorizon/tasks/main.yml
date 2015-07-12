@@ -1,0 +1,11 @@
+---
+- include: ../../common/tasks/gpg-system.yml
+
+- include: ../../common/tasks/epel7.yml
+
+- yum: name={{ item }} state=present
+  with_items:
+    - rsync
+    - znc
+
+- include: ../../common/tasks/secure-shell-strong.yml

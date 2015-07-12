@@ -1,0 +1,9 @@
+[rhel7-workstation]
+name=rhel7-workstation
+baseurl=https://download.eng.rdu2.redhat.com/released/RHEL-7/7.1/Workstation/x86_64/os/
+gpgcheck=0
+
+[rhel7-workstation-optional]
+name=rhel7-workstation-optional
+baseurl=https://download.eng.rdu2.redhat.com/released/RHEL-7/7.1/Workstation-optional/x86_64/os/
+gpgcheck=0

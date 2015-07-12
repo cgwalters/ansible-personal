@@ -1,0 +1,15 @@
+---
+- command: gpg --import /root/walters-gpg.txt
+  when: gpg_walters.rc != 0
+
+- name: Retrieve and GPG verify homegit
+  shell: >
+    cd /root && rm homegit.tmp -rf && git clone https://github.com/cgwalters/homegit homegit.tmp && cd homegit.tmp && git verify-tag v2015.0 && cd .. && mv /root/homegit{.tmp,}
+    creates=/root/homegit
+  register: homegit
+
+- name: Install homegit
+  shell: cd /root/homegit && rm -f /root/.bashrc && make install-dotfiles
+  when: homegit.changed
+
+

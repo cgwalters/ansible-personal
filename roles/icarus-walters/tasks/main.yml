@@ -1,0 +1,37 @@
+---
+- name: Basic directories
+  file: state=directory path={{ item }}
+  with_items:
+    - ~/Documents
+    - ~/tmp
+    - ~/Private
+    - ~/.ssh
+    - ~/.config/
+    - ~/.koji
+    - ~/.config/xchat2
+
+- file: path=HighSec state=directory mode=0700
+
+- file: state=directory path=~/.koji/centos
+
+- copy: src=koji.config dest=~/.koji/config
+
+- file: state=link src=/srv/walters/src path=~/src
+
+- file: state=link src=../../HighSec/centos-cbs/{{ item }} path=~/.koji/centos/{{ item }}
+  with_items:
+    - client.crt
+    - clientca.crt
+    - serverca.crt
+
+- copy: src=xchat-servlist_.conf dest=~/.config/xchat2
+
+- copy: src=ssh-config dest=~/.ssh/config mode=0600
+
+- copy: src=fedora-server-ca.cert dest=~/.fedora-server-ca.cert
+
+- file: path=~/.gnupg state=directory mode=0700
+
+- name: Configure GPG based on riseup
+  copy: src=gpg.conf dest=~/.gnupg/gpg.conf
+

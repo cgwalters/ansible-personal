@@ -1,0 +1,23 @@
+---
+- name: Allow libvirt if in wheel group
+  action: copy src=polkit-libvirt.rules dest=/etc/polkit-1/rules.d/80-libvirt-manage.rules
+
+- yum: name={{ item }} state=present
+  with_items:
+    - libvirt
+
+- name: Restart libvirtd after firewalld
+  action: service name=libvirtd state=restarted enabled=1
+  when: firewalld.changed
+
+- file: path=/srv/libvirt/gold state=directory mode=0775 setype=virt_image_t
+
+- file: path=/srv/libvirt/images state=directory mode=0770 setype=virt_image_t
+
+- acl: name=/srv/libvirt/images default=yes entity=qemu etype=user permissions="rwX" state=present
+
+- acl: name=/srv/libvirt/images entity=qemu etype=user permissions="rx" state=present
+
+- file: path=/var/lib/libvirt/images state=link src=/srv/libvirt/images
+
+

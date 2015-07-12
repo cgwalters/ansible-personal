@@ -1,0 +1,22 @@
+---
+# Docker
+- yum: name={{ item }} state=present
+  with_items:
+    - docker
+    - atomic
+  tags:
+    - packages
+
+- file: path=/srv/docker state=directory setype=docker_var_lib_t
+  register: dockersrv
+  notify:
+    - stop docker
+
+- name: Remove /var/lib/docker
+  action: command rm /var/lib/docker -rf
+  when: dockersrv.changed
+
+- file: path=/var/lib/docker state=link src=/srv/docker setype=var_t
+
+- service: name=docker state=started enabled=1
+

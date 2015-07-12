@@ -1,0 +1,19 @@
+---
+- yum: name={{ item }} state=present
+  with_items:
+    - httpd
+  tags:
+    - packages
+ 
+- service: name=httpd state=started enabled=yes
+
+- file: path=/etc/httpd/conf.d/welcome.conf state=absent
+  notify: reload apache
+
+- lineinfile: dest=/etc/httpd/conf/httpd.conf regexp='^DocumentRoot ' line='DocumentRoot /srv/binwork'
+  notify: reload apache
+
+- copy: src=httpd-srv-binwork.conf dest=/etc/httpd/conf.d/srv-binwork.conf
+  notify: reload apache
+
+ 

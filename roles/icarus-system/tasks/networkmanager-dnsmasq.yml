@@ -1,0 +1,13 @@
+---
+- yum: name={{ item }} state=present
+  with_items:
+    - NetworkManager
+    - dnsmasq
+  tags:
+    - packages
+
+- name: Configure NetworkManager to use dnsmasq
+  action: lineinfile dest=/etc/NetworkManager/NetworkManager.conf regexp='^dns=' insertafter='^\[main\]' line='dns=dnsmasq'
+  # not supported yet: notify: reload NetworkManager 
+
+

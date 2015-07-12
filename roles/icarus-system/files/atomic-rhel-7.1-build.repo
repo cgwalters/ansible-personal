@@ -1,0 +1,4 @@
+[atomic-rhel-7.1-build]
+name=atomic-rhel-7.1-build
+baseurl=https://download.eng.rdu2.redhat.com/brewroot/repos/atomic-rhel-7.1-build/latest/x86_64/
+gpgcheck=0

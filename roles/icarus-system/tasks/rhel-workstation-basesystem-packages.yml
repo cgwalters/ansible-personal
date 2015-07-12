@@ -1,0 +1,12 @@
+---
+- name: Remove setroubleshoot and abrt
+  action: yum name={{ item }} state=absent
+  with_items:
+    - setroubleshoot
+    - abrt
+
+- name: Disable firewalld due to docker/etc incompat
+  service: name=firewalld state=stopped enabled=0
+  register: firewalld
+
+

@@ -1,0 +1,9 @@
+---
+- yum: name={{ item }} state=present
+  with_items:
+    - polipo
+  tags:
+    - packages
+
+- service: name=polipo state=started enabled=yes
+

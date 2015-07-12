@@ -1,0 +1,3 @@
+---
+- name: /etc/pkgrepos.d - My custom place to put non-default repo files
+  action: file path=/etc/pkgrepos.d state=directory

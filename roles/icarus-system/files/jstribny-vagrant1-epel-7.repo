@@ -1,0 +1,8 @@
+[jstribny-vagrant1]
+name=Copr repo for vagrant1 owned by jstribny
+baseurl=https://copr-be.cloud.fedoraproject.org/results/jstribny/vagrant1/epel-7-$basearch/
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://copr-be.cloud.fedoraproject.org/results/jstribny/vagrant1/pubkey.gpg
+enabled=1
+enabled_metadata=1

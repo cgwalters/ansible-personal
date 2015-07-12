@@ -1,0 +1,12 @@
+---
+- name: Origin internal yum
+  action: copy src={{ item }}.repo dest=/etc/yum.repos.d/{{ item }}.repo
+  with_items:
+    - rhel7-workstation
+    - rhel7-server
+    - rhel7-extras-candidate
+    - rhel7.2-candidate
+
+- name: Disable rhsmcertd, as we're using the VPN
+  service: name=rhsmcertd state=stopped enabled=0
+

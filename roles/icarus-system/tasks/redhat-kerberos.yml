@@ -1,0 +1,5 @@
+---
+# Red Hat Kerberos
+- copy: src=krb5.conf dest=/etc/krb5.conf
+
+

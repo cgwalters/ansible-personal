@@ -1,0 +1,17 @@
+---
+- hosts: icarus
+  sudo: yes
+  roles:
+    - icarus-system
+
+- hosts: eventhorizon
+  sudo: yes
+  roles:
+    - common
+    - eventhorizon
+
+- hosts: icarus
+  sudo: no
+  roles:
+    - common
+    - icarus-walters

@@ -1,0 +1,4 @@
+[rhel7-server-optional]
+name=rhel7-server-optional
+baseurl=https://download.eng.rdu2.redhat.com/released/RHEL-7/7.1/Server-optional/x86_64/os/
+gpgcheck=0

@@ -1,0 +1,11 @@
+---
+- copy: src={{ item }}.crt dest=/etc/pki/ca-trust/source/anchors/{{ item }}.crt
+  with_items:
+    - redhat-it
+    - redhat-engops
+  register: cacert
+
+- shell: update-ca-trust
+  when: cacert.changed
+  changed_when: false
+

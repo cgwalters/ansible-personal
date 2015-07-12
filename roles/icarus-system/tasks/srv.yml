@@ -1,0 +1,12 @@
+---
+- file: path=/srv state=directory mode=0775 setype=mnt_t
+
+- file: path=/srv/tmp state=directory mode=01777 setype=tmp_t
+
+- file: path=/srv/cache state=directory mode=01777 setype=var_t
+
+- file: path=/srv/binwork state=directory mode=0775 setype=public_content_t
+
+- file: path=/srv/images state=directory mode=0775 setype=public_content_t
+
+- file: path=/srv/walters state=directory mode=0700 setype=user_home_t owner=walters group=walters

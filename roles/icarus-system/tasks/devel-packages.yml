@@ -1,0 +1,29 @@
+---
+- name: Development yum repositories
+  action: copy src={{ item }}.repo dest=/etc/yum.repos.d/{{ item }}.repo
+  with_items:
+    - rhpkg
+
+- yum: name={{ item }} state=present
+  with_items:
+    - emacs
+    - keepassx
+    - git
+    - ansible
+    - xchat
+    - xsel
+    - dnsmasq
+    - virt-manager
+    - virt-install
+    - libguestfs-tools-c
+    - python-novaclient
+    - python-glanceclient
+    - s3cmd
+    - rhpkg
+    - brewkoji
+    - fedpkg
+    - mock
+    - createrepo_c
+  tags:
+    - packages
+
