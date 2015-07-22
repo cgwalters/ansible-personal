@@ -2,6 +2,7 @@
 - hosts: icarus
   sudo: yes
   roles:
+    - rh-cacerts
     - icarus-system
 
 - hosts: eventhorizon

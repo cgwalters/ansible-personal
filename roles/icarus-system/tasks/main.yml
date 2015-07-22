@@ -1,5 +1,4 @@
 ---
-- include: rh-internal-client.yml
 - include: ../../common/tasks/gpg-system.yml
 - include: gpg-smartcard.yml
 - include: srv.yml
