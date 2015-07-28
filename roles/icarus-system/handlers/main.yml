@@ -1,0 +1,3 @@
+---
+- name: stop docker
+  service: name=docker state=stopped
