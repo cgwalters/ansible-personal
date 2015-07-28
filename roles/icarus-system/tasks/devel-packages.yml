@@ -27,3 +27,5 @@
   tags:
     - packages
 
+# nspawn is better, also https://lists.fedoraproject.org/pipermail/buildsys/2015-July/004833.html
+- lineinfile: dest=/etc/mock/site-defaults.cfg line="config_opts['use_nspawn'] = True"
