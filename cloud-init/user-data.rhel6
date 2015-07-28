@@ -1,0 +1,27 @@
+#cloud-config
+
+preserve_hostname: True
+
+# Configure the user `walters` with my general purpose SSH key, and
+# passwordless sudo.
+users:
+  - name: walters
+    gecos: Colin Walters
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDhNhbnKX9mNKsOWTloW/e4XlWBzctBkIDPp8/rV7Ff+S09ykp0k6CG+sWBbh7sipkR//qavRSO+iE1bVBxS1CtV1zMz5sN9n8HUna+sAJB7V34gXCa3Fk3uPgm6OMuNn+wgIVdJH2MUXB0OLHX3onoM3w3f2e0r7zz9aBTJcXIVlkSTEfaivrSkKydzf88tRt3nOG+xGWXKWRDniSOODVI65CY+NIYXz1o2s8CS+CKrezUT6sj2nmkXKtQr7dQ97X7zDXYkhrtVpoVBEhkcc1Rhz6vjrhw9Rh6k7/t/GA3bm6GAxzLX5ZiI6OLWazm3MPTcBGgVd7JNh8A3lh1mwlH walters@lenny
+
+bootcmd:
+  - echo 'AUTOCREATE_SERVER_KEYS=RSA' >> /etc/sysconfig/sshd
+  - |
+    for line in \
+      "KexAlgorithms diffie-hellman-group-exchange-sha256" \
+      "Ciphers aes256-ctr,aes192-ctr,aes128-ctr" \
+      "MACs hmac-sha2-512,hmac-sha2-256,hmac-ripemd160" \
+      "GSSAPIAuthentication no" \
+      "PasswordAuthentication no"; do \
+        if ! grep -q "${line}" /etc/ssh/sshd_config; then \
+          echo ${line} >> /etc/ssh/sshd_config; \
+        fi \
+      done
+    
