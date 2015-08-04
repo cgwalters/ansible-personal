@@ -1,3 +1,6 @@
 ---
 - name: stop docker
   service: name=docker state=stopped
+
+- name: reload apache
+  service: name=httpd state=reloaded

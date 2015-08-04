@@ -2,6 +2,7 @@
 - yum: name={{ item }} state=present
   with_items:
     - httpd
+    - mod_ssl
   tags:
     - packages
  
@@ -12,6 +13,22 @@
 
 - lineinfile: dest=/etc/httpd/conf/httpd.conf regexp='^DocumentRoot ' line='DocumentRoot /srv/binwork'
   notify: reload apache
+
+# BEGIN https://weakdh.org/sysadmin.html
+- lineinfile: dest=/etc/httpd/conf.d/ssl.conf regexp='^SSLProtocol ' line='SSLProtocol all -SSLv2 -SSLv3'
+
+# I manually trimmed this list to just ECDHE/AES (PFS), and plain AES,
+# avoiding weak MACs and ECDSA.
+- lineinfile: dest=/etc/httpd/conf.d/ssl.conf regexp='^SSLCipherSuite ' line='SSLCipherSuite ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256'
+  notify: reload apache
+
+- lineinfile: dest=/etc/httpd/conf.d/ssl.conf regexp='^SSLHonorCipherOrder ' line='SSLHonorCipherOrder on'
+  notify: reload apache
+
+# Unfortunately needs newer Apache than is in RHEL7.2 
+# - copy: src=dhparams.pem dest=/etc/httpd/dhparams.pem
+# - lineinfile: dest=/etc/httpd/conf.d/ssl.conf regexp='SSLOpenSSLConfCmd ' line='SSLOpenSSLConfCmd DHParameters /etc/httpd/dhparams.pem'
+# END https://weakdh.org/sysadmin.html
 
 - copy: src=httpd-srv-binwork.conf dest=/etc/httpd/conf.d/srv-binwork.conf
   notify: reload apache
