@@ -1,5 +1,5 @@
 [beaker-server]
 name=Beaker Server - RedHatEnterpriseLinux$releasever
-baseurl=https://beaker-project.org/yum/server/RedHatEnterpriseLinux7/
+baseurl=http://download.lab.bos.redhat.com/beakerrepos/client/RedHatEnterpriseLinux7/
 enabled=1
 gpgcheck=0
