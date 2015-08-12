@@ -1,0 +1,12 @@
+---
+- name: copy beaker repo
+  action: copy src=beaker-server-RHEL.repo
+          dest=/etc/yum.repos.d
+          owner=root group=root
+
+- yum: name=beaker-client state=present
+
+- action: copy src=beaker-client.conf
+          dest=/etc/beaker/client.conf
+          owner=root group=root
+

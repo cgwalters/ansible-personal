@@ -10,6 +10,7 @@
 - include: root-walters-homegit.yml
 - include: ../../common/tasks/secure-shell-strong.yml
 - include: libvirt.yml
+- include: beaker-client.yml
 - include: networkmanager-dnsmasq.yml
 - include: devel-packages.yml
 - include: docker.yml
