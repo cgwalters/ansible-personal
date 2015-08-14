@@ -3,6 +3,7 @@
   action: yum name={{ item }} state=absent
   with_items:
     - setroubleshoot
+    - setroubleshoot-server
     - abrt
 
 - name: Disable firewalld due to docker/etc incompat
