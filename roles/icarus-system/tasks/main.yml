@@ -4,9 +4,9 @@
 - include: srv.yml
 - include: pkgrepos.yml
 - include: rhel-internal-yum-repos.yml
-- include: rhel-workstation-basesystem-packages.yml
 - include: ../../common/tasks/epel7.yml
 - include: rdo-kilo.yml
+- include: rhel-workstation-basesystem-packages.yml
 - include: root-walters-homegit.yml
 - include: ../../common/tasks/secure-shell-strong.yml
 - include: libvirt.yml
