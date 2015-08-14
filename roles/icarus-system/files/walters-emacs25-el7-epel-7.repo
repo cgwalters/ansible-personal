@@ -1,0 +1,8 @@
+[walters-emacs25-el7]
+name=Copr repo for emacs25-el7 owned by walters
+baseurl=https://copr-be.cloud.fedoraproject.org/results/walters/emacs25-el7/epel-7-$basearch/
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://copr-be.cloud.fedoraproject.org/results/walters/emacs25-el7/pubkey.gpg
+enabled=1
+enabled_metadata=1

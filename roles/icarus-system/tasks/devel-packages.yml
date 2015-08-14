@@ -4,6 +4,8 @@
   with_items:
     - rhpkg
 
+- copy: src=walters-emacs25-el7-epel-7.repo dest=/etc/yum.repos.d
+
 - yum: name={{ item }} state=present
   with_items:
     - emacs
