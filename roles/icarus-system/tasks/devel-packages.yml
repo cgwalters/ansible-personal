@@ -11,6 +11,7 @@
     - emacs
     - keepassx
     - git
+    - diffstat
     - ansible
     - xchat
     - xsel
