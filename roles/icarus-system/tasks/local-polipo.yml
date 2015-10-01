@@ -5,5 +5,10 @@
   tags:
     - packages
 
+- lineinfile: dest=/etc/polipo/config "line={{ item }}"
+  with_items:
+    - "maxAge = 0"
+    - "maxExpiresAge = 0"
+
 - service: name=polipo state=started enabled=yes
 
