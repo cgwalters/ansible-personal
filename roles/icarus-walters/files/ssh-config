@@ -59,6 +59,7 @@ Host *
      PasswordAuthentication no
      KbdInteractiveAuthentication no
      Protocol 2
+     HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-ed25519,ssh-rsa,ecdsa-sha2-nistp521-cert-v01@openssh.com
      # https://stribika.github.io/2015/01/04/secure-secure-shell.html
      Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
      KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
