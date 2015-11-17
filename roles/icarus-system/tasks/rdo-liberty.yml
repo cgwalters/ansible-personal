@@ -1,0 +1,4 @@
+---
+- copy: src=RPM-GPG-KEY-CentOS-SIG-Cloud dest=/etc/pki/rpm-gpg
+
+- copy: src=rdo-release.repo dest=/etc/yum.repos.d

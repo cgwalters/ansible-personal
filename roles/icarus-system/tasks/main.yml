@@ -5,7 +5,7 @@
 - include: pkgrepos.yml
 - include: rhel-internal-yum-repos.yml
 - include: ../../common/tasks/epel7.yml
-- include: rdo-kilo.yml
+- include: rdo-liberty.yml
 - include: rhel-workstation-basesystem-packages.yml
 - include: root-walters-homegit.yml
 - include: ../../common/tasks/secure-shell-strong.yml
