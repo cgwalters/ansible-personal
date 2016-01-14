@@ -27,6 +27,8 @@
 - copy: src=xchat-servlist_.conf dest=~/.config/xchat2
 
 - copy: src=ssh-config dest=~/.ssh/config mode=0600
+  tags:
+    - sshconfig
 
 - copy: src=fedora-server-ca.cert dest=~/.fedora-server-ca.cert
 
