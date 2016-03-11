@@ -16,3 +16,8 @@
   roles:
     - common
     - icarus-walters
+
+- hosts: escher
+  sudo: yes
+  roles:
+    - escher

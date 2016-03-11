@@ -1,0 +1,10 @@
+---
+- include: ../../common/tasks/gpg-system.yml
+- include: ../../common/tasks/secure-shell-strong.yml
+- copy: src={{ item }} dest=/etc/systemd/system
+  with_items:
+    - rpmostree-auto.timer
+    - rpmostree-auto.service
+  notify: reload systemd
+
+- service: name=rpmostree-auto.timer state=started enabled=1  

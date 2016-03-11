@@ -1,0 +1,8 @@
+[Unit]
+Description=rpm-ostree automatic upgrade
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rpm-ostree upgrade -r
