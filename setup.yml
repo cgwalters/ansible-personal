@@ -11,6 +11,12 @@
     - common
     - eventhorizon
 
+- hosts: olympus
+  sudo: yes
+  roles:
+    - atomichost
+    - olympus
+
 - hosts: icarus
   sudo: no
   roles:
@@ -20,4 +26,5 @@
 - hosts: escher
   sudo: yes
   roles:
+    - atomichost
     - escher

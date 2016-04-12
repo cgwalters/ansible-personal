@@ -1,0 +1,3 @@
+---
+- include: ../../common/tasks/gpg-system.yml
+- include: ../../common/tasks/secure-shell-strong.yml
