@@ -28,8 +28,8 @@ bootcmd:
       "MACs hmac-sha2-512-etm@openssh.com" \
       "GSSAPIAuthentication no" \
       "PasswordAuthentication no"; do \
-        if ! grep -q "${line}" /etc/ssh/sshd_config; then \
-          echo ${line} >> /etc/ssh/sshd_config; \
+        if ! grep -q "$line" /etc/ssh/sshd_config; then \
+          echo $line >> /etc/ssh/sshd_config; \
         fi \
       done
     
